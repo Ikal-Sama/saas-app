@@ -22,9 +22,11 @@ const CompanionsList = ({
   companions,
   classNames,
 }: CompanionsListProps) => {
+  console.log(companions);
+
   return (
     <article className={cn("companion-list", classNames)}>
-      <h2 className="font-bold text-3xl">Recent Sessions</h2>
+      <h2 className="font-bold text-3xl">{title}</h2>
 
       <Table>
         <TableHeader>
@@ -36,7 +38,7 @@ const CompanionsList = ({
         </TableHeader>
         <TableBody>
           {companions?.map(({ id, subject, name, topic, duration }) => (
-            <TableRow key={id}>
+            <TableRow key={`${id}-${Math.random()}`}>
               <TableCell>
                 <Link href={`/companions/${id}`}>
                   <div className="flex items-center gap-2">
